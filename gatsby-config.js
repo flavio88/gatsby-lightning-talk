@@ -10,7 +10,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -27,6 +27,18 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-source-drupal`,
+      options: {
+        baseUrl: `http://127.0.0.1:32779/`,
+        apiBase: `jsonapi`, // optional, defaults to `jsonapi`
+      },
+      links: {
+        blog: "http://127.0.0.1:32779/jsonapi/node/blog",
+        article: "http://127.0.0.1:32779/jsonapi/node/article"
+      }
+    },
+    `gatsby-transformer-remark`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
